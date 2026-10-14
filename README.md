@@ -43,6 +43,28 @@ The script decides automatically what is needed:
 
 A full build takes roughly 6–10 minutes. Pass exact `X.Y.Z` versions (`2.7.1`, not `2.7`).
 
+### Install as an AI coding skill
+
+This repo is packaged as a [Claude Code](https://docs.claude.com/en/docs/claude-code) / [CodeBuddy](https://cnb.cool/codebuddy/codebuddy-code) skill. Clone it into the skills directory of your AI tool:
+
+```bash
+# Claude Code
+git clone https://github.com/ScottZg/ruby-macos-compat-install.git \
+  ~/.claude/skills/ruby-macos-compat-install
+
+# CodeBuddy Code
+git clone https://github.com/ScottZg/ruby-macos-compat-install.git \
+  ~/.codebuddy/skills/ruby-macos-compat-install
+```
+
+Then just ask your AI assistant in natural language, for example:
+
+> 帮我用 rvm 安装 ruby 2.6.5 / Install ruby 2.6.5 with rvm
+
+The skill triggers automatically when the request matches installing Ruby with RVM on a Mac, or when `rvm install` fails with the signatures above — no manual invocation needed. The AI will read `SKILL.md`, run `scripts/install_ruby.sh`, and verify the result.
+
+To update later: `git -C ~/.claude/skills/ruby-macos-compat-install pull` (or the CodeBuddy path).
+
 ### Requirements
 
 - RVM (`~/.rvm/bin/rvm`)
@@ -97,6 +119,28 @@ scripts/install_ruby.sh <版本> --bg       # 后台构建，轮询打印的日�
 4. **验证**——arch、OpenSSL、fiddle closure。
 
 完整构建约需 6–10 分钟。请传精确的 `X.Y.Z` 版本号（`2.7.1`，而不是 `2.7`）。
+
+### 作为 AI 编码工具的 skill 安装使用
+
+本仓库打包为 [Claude Code](https://docs.claude.com/en/docs/claude-code) / [CodeBuddy](https://cnb.cool/codebuddy/codebuddy-code) 的 skill，克隆到 AI 工具的 skills 目录即可：
+
+```bash
+# Claude Code
+git clone https://github.com/ScottZg/ruby-macos-compat-install.git \
+  ~/.claude/skills/ruby-macos-compat-install
+
+# CodeBuddy Code
+git clone https://github.com/ScottZg/ruby-macos-compat-install.git \
+  ~/.codebuddy/skills/ruby-macos-compat-install
+```
+
+之后直接用自然语言对 AI 助手提需求即可，例如：
+
+> 帮我用 rvm 安装 ruby 2.6.5 / Install ruby 2.6.5 with rvm
+
+当请求匹配「在 Mac 上用 RVM 安装 Ruby」，或 `rvm install` 出现上文提到的错误签名时，skill 会被自动触发，无需手动调用。AI 会读取 `SKILL.md`，执行 `scripts/install_ruby.sh` 并验证结果。
+
+后续更新：`git -C ~/.claude/skills/ruby-macos-compat-install pull`（CodeBuddy 同理换路径）。
 
 ### 环境要求
 
