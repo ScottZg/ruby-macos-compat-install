@@ -1,0 +1,26 @@
+--- a/configure
++++ b/configure
+@@ -6078,6 +6078,9 @@
+ #ifdef __ppc64__
+ "processor-name=powerpc64"
+ #endif
++#ifdef __arm64__
++"processor-name=arm64"
++#endif
+ EOF
+ 	    sed -n 's/^"processor-name=\(.*\)"/\1/p'`
+ 	    target="$target_cpu${target}"
+--- a/ext/fiddle/closure.c
++++ b/ext/fiddle/closure.c
+@@ -13,6 +13,11 @@
+     ffi_type **argv;
+ } fiddle_closure;
+ 
++#if defined(__APPLE__) && defined(__arm64__)
++/* macOS SDK libffi (>= macOS 26) removed the legacy ffi_prep_closure on arm64:
++ * FFI_LEGACY_CLOSURE_API is 0, so use ffi_closure_alloc + ffi_prep_closure_loc. */
++# define USE_FFI_CLOSURE_ALLOC 1
++#endif
+ #if defined(USE_FFI_CLOSURE_ALLOC)
+ #elif defined(__OpenBSD__) || defined(__APPLE__) || defined(__linux__)
+ # define USE_FFI_CLOSURE_ALLOC 0
