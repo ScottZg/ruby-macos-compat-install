@@ -11,6 +11,8 @@ Install **any Ruby version with RVM on macOS** — on both Apple Silicon (M-seri
 - For **Ruby <= 2.7.1 on arm64**: applies the bundled Apple Silicon patch (`configure` `__arm64__` branch + fiddle legacy closure API fix).
 - For **Ruby < 3.1**: resolves OpenSSL 1.1, building 1.1.1w from source when Homebrew no longer provides the EOL formula.
 
+![RVM Ruby install on macOS terminal](assets/rvm-install-terminal.png)
+
 ### When to use
 
 - Installing any Ruby version with RVM on a Mac, especially legacy versions.
@@ -87,6 +89,8 @@ MIT — see [LICENSE](LICENSE).
 
 - **arm64 上的 Ruby <= 2.7.1**：自动应用内置的 Apple Silicon 补丁（`configure` 的 `__arm64__` 分支 + fiddle 旧版 closure API 修复）。
 - **Ruby < 3.1**：自动解决 OpenSSL 1.1 依赖，在 Homebrew 已下架该 EOL 版本时从源码构建 1.1.1w。
+
+![macOS 上的 RVM Ruby 安装终端](assets/rvm-install-terminal.png)
 
 ### 适用场景
 
